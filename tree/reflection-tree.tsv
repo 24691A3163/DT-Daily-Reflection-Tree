@@ -1,0 +1,31 @@
+id	parentId	type	text	options	target	signal
+START	null	start	Good evening. Let’s reflect on your day.			
+A1_OPEN	START	question	How would you describe your day overall?	Productive|Tough|Mixed|Frustrating		
+A1_D1	A1_OPEN	decision		answer=Productive|Mixed:A1_Q1;answer=Tough|Frustrating:A1_Q2		
+A1_Q1	A1_D1	question	When things went well, what contributed most?	My preparation|Team support|Luck|Adaptation		axis1:internal
+A1_Q2	A1_D1	question	When things didn’t go well, what was your instinct?	Take control|Wait for help|Blame situation|Feel stuck		axis1:external
+A1_Q3	A1_Q1	question	When facing a challenge, what did you do?	Planned solution|Adapted|Ignored|Waited		axis1:internal
+A1_Q4	A1_Q2	question	What affected you most today?	Others|Energy|Clarity|Distractions		axis1:external
+A1_R1	A1_Q3	reflection	You showed control and ownership today.			axis1:internal
+A1_R2	A1_Q4	reflection	External factors influenced your day, but small choices still matter.			axis1:external
+BRIDGE_1_2	A1_R1	bridge	Now let’s shift from control to contribution.		A2_OPEN	
+BRIDGE_1_2B	A1_R2	bridge	Now let’s shift from control to contribution.		A2_OPEN	
+
+A2_OPEN	null	question	Think of one interaction today. What stands out?	I helped someone|I did extra work|I expected recognition|Others didn’t help		
+A2_D1	A2_OPEN	decision		answer=I helped someone|I did extra work:A2_Q1;answer=I expected recognition|Others didn’t help:A2_Q2		
+A2_Q1	A2_D1	question	Why did you do that?	Helping others|Team success|Responsibility|Habit		axis2:contribution
+A2_Q2	A2_D1	question	What frustrated you?	Lack of recognition|Unfair work|Others|Support issues		axis2:entitlement
+A2_Q3	A2_Q1	question	How often do you contribute?	Often|Sometimes|Rarely|Never		axis2:contribution
+A2_Q4	A2_Q2	question	How did you react?	Complain|Ignore|Adjust|Withdraw		axis2:entitlement
+A2_R1	A2_Q3	reflection	You are contributing beyond expectations.			axis2:contribution
+A2_R2	A2_Q4	reflection	Growth comes from focusing on what you give.			axis2:entitlement
+BRIDGE_2_3	A2_R1	bridge	Now let’s expand perspective.		A3_OPEN	
+BRIDGE_2_3B	A2_R2	bridge	Now let’s expand perspective.		A3_OPEN	
+
+A3_OPEN	null	question	Who was affected most by your challenge?	Myself|Team|Colleague|Customer		
+A3_Q1	A3_OPEN	question	What perspective did you consider?	Only mine|Team view|Others|Customer		axis3:self
+A3_Q2	A3_Q1	question	How did your actions affect others?	No impact|Some|Major|Positive		axis3:altro
+A3_R1	A3_Q2	reflection	Thinking beyond yourself builds meaning and impact.			axis3:altro
+
+SUMMARY	A3_R1	summary	Today you showed {axis1.dominant} control, {axis2.dominant} contribution, and {axis3.dominant} awareness.			
+END	SUMMARY	end	See you tomorrow.			
