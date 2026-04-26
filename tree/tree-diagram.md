@@ -1,0 +1,25 @@
+```mermaid
+graph TD
+START --> A1_OPEN
+A1_OPEN --> A1_D1
+A1_D1 --> A1_Q1
+A1_D1 --> A1_Q2
+A1_Q1 --> A1_Q3
+A1_Q2 --> A1_Q4
+A1_Q3 --> A1_R1
+A1_Q4 --> A1_R2
+A1_R1 --> A2_OPEN
+A1_R2 --> A2_OPEN
+A2_OPEN --> A2_D1
+A2_D1 --> A2_Q1
+A2_D1 --> A2_Q2
+A2_Q1 --> A2_Q3
+A2_Q2 --> A2_Q4
+A2_Q3 --> A2_R1
+A2_Q4 --> A2_R2
+A2_R1 --> A3_OPEN
+A2_R2 --> A3_OPEN
+A3_OPEN --> A3_Q1
+A3_Q1 --> A3_Q2
+A3_Q2 --> SUMMARY
+SUMMARY --> END
